@@ -8,7 +8,7 @@ class TestCredential(unittest.TestCase):
         unittest.TestCase: TestCase class that helps in creating test cases.
     '''
 
-    def setup(self):
+    def setUp(self):
         '''
         set up method to run before each test case
         '''
@@ -19,3 +19,13 @@ class TestCredential(unittest.TestCase):
         test case to run after each test case
         '''
         Credential.credential_list = []
+
+    def test_init(self):
+        '''
+        test case to test if the credential object is initialized
+        '''
+        self.assertEqual(self.new_credential.account_name, "insta")
+
+
+if __name__ == "__main__":
+    unittest.main()
