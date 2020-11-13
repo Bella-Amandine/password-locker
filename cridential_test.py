@@ -45,6 +45,16 @@ class TestCredential(unittest.TestCase):
         test_credential.delete_credential()
         self.assertEqual(len(Credential.credential_list), 1)
 
+    def test_display_credentials(self):
+        '''
+        Test case to test if we can display all credentials in a list
+        '''
+
+        self.new_credential.save_credential()
+        test_credential = Credential("Tweeter", "pass")
+        test_credential.save_credential()
+        self.assertEqual(len(Credential.credential_list), 2)
+
 
 if __name__ == "__main__":
     unittest.main()
