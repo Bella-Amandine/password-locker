@@ -15,6 +15,13 @@ class TestUser(unittest.TestCase):
 
         self.new_user = User("Bella","Amandine","password","password")
 
+    def tearDown(self):
+        '''
+        Test case that run after each test case
+        '''
+
+        User.user_list = []
+
     def test_init(self):
         '''
         test case to test if the object is initialized properly
@@ -25,12 +32,6 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.password, "password")
         self.assertEqual(self.new_user.confirmPassword, "password")
 
-    def tearDown(self):
-        '''
-        Test case that run after each test case
-        '''
-
-        User.user_list = []
 
     def test_save_user(self):
         '''
@@ -48,6 +49,15 @@ class TestUser(unittest.TestCase):
         self.new_user.save_user()
         self.new_user.delete_user()
         self.assertEqual(len(User.user_list), 0)
+
+    def test_find_by_name(self):
+        '''
+        Test case that test if we can find a user by name
+        '''
+
+        self.new_user.save_user()
+        found_user = User.find_by_name("Bella")
+        self.assertEqual(found_user.lname, self.new_user.lname)
 
 
 if __name__ == '__main__':
