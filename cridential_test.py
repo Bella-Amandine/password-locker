@@ -25,6 +25,14 @@ class TestCredential(unittest.TestCase):
         test case to test if the credential object is initialized
         '''
         self.assertEqual(self.new_credential.account_name, "insta")
+    
+    def test_save_credential(self):
+        '''
+        Test case to test if a new credential is saved into the list
+        '''
+
+        self.new_credential.save_credential()
+        self.assertEqual(len(Credential.credential_list), 1)
 
 
 if __name__ == "__main__":
