@@ -67,6 +67,16 @@ class TestUser(unittest.TestCase):
         self.new_user.save_user()
         self.assertTrue(User.is_user_exists("Bella"))
 
+    def test_display_users(self):
+        '''
+        Test case to test if we can display all users from user_list
+        '''
+
+        self.new_user.save_user()
+        self.test_user = User("Princia", "Pascy", "pass", "pass")
+        self.test_user.save_user()
+        self.assertEqual(len(User.user_list), 2)
+
 
 if __name__ == '__main__':
     unittest.main()
